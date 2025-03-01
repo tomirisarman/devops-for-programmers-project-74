@@ -10,6 +10,8 @@ services:
     command: make dev
     volumes:
       - ".:/app"
+    depends_on:
+      - db
   caddy:
     image: caddy:2.6
     volumes:
@@ -19,3 +21,16 @@ services:
       - "80:80"
     depends_on:
       - app
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER:  ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
