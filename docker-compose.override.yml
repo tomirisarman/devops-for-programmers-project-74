@@ -3,6 +3,10 @@ services:
     extends:
       file: docker-compose.yml
       service: app
+    build:
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     command: make dev
+    volumes:
+      - ".:/app"
