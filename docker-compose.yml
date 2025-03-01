@@ -6,10 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile.production
     command: make test
-    volumes:
-      - ".env.example:/app/.env"
     depends_on:
       - db
+    environment:
+      DATABASE_USERNAME: "postgres"
+      DATABASE_PASSWORD: "postgres"
   db:
     image: postgres
     restart: always
