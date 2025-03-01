@@ -2,11 +2,12 @@ version: "3"
 services:
   app:
     image: artomiris/devops-for-programmers-project-74
-    restart: always
     build:
       context: .
       dockerfile: Dockerfile.production
     command: make test
+    volumes:
+      - ".env.example:/app/.env"
     depends_on:
       - db
   db:
@@ -24,3 +25,5 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    expose:
+      - "5432"
