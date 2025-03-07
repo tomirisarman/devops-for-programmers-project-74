@@ -1,8 +1,6 @@
 services:
-  devapp:
-    extends:
-      file: docker-compose.yml
-      service: app
+  app:
+    image: app:local
     build:
       dockerfile: Dockerfile
     ports:
@@ -10,8 +8,6 @@ services:
     command: make dev
     volumes:
       - ".:/app"
-    depends_on:
-      - db
   caddy:
     image: caddy:2.6
     volumes:
