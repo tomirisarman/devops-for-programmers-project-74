@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Check
-        run: docker compose --file docker-compose.yml up --abort-on-container-exit
+        run: make test
 
       - name: Build App
         uses: docker/build-push-action@v3
