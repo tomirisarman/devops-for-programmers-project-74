@@ -10,10 +10,11 @@ services:
       - "./app:/app"
   caddy:
     image: caddy:2.6
+    restart: always
     volumes:
       - "./services/caddy/Caddyfile:/etc/caddy/Caddyfile"
     ports:
-      - "443:443"
       - "80:80"
+      - "443:443"
     depends_on:
       - app
