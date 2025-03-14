@@ -1,7 +1,11 @@
+prepare-env:
+	cp -n app/.env.example .env
+
 test:
-	cp app/.env.example app/.env
-	docker compose --env-file app/.env -f docker-compose.yml up --abort-on-container-exit
+	docker compose -f docker-compose.yml up --abort-on-container-exit
+
+setup:
+	$(MAKE) -C app setup
 
 run:
-	cp app/.env.example app/.env
-	docker compose --env-file app/.env up
+	docker compose up

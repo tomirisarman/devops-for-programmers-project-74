@@ -9,12 +9,19 @@ Docker image: [artomiris/devops-for-programmers-project-74](https://hub.docker.c
 
 <h3>How-To:</h3>
 
+Specify environment variables manually or prepare an *.env* file:
+```
+make prepare-env
+```
+Setup (install dependencies and run migrations):
+```
+make setup
+```
 Run tests:
 ```
 make test
 ``` 
-
 Run application:
 ``` 
 make run
-``` 
+```
