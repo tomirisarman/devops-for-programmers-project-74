@@ -8,6 +8,7 @@ services:
     command: make dev
     volumes:
       - "./app:/app"
+      - "/app/node_modules"
   caddy:
     image: caddy:2.6
     restart: always
